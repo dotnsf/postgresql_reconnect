@@ -57,7 +57,7 @@ function try_reconnect( ts ){
       console.log( 'on error on retry(' + ts + ')', err.code );
       if( err.code == '57P01' ){
         //. terminated by admin?
-        try_reconnect( ms + 1000 );
+        try_reconnect( ts + 1000 );
       }
     });
   }, ts );
