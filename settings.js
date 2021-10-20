@@ -13,7 +13,6 @@ var initial_ms = 1000;  //. 初期ウェイト値
 var ms = initial_ms;    //. 現在のウェイト値
 
 var connectionString = "postgres://" + pg_username + ":" + pg_password + "@" + pg_hostname + ":" + pg_port + "/" + pg_database;//+ "?sslmode=verify-full";
-//var pg = new PG.Pool({  //. PG.Pool ではなく PG.Client で接続する
 var pg = new PG.Client({
   connectionString: connectionString,
   idleTimeoutMillis: ( 1 * 86400 * 1000 )  //. 1 days : https://node-postgres.com/api/pool#new-pool-config-object-
@@ -46,7 +45,7 @@ function try_reconnect( ts ){
       if( err ){
         //. 接続リトライ時に DB が動いていない
         console.log( 'no db on retry(' + ts + ')', err.code );
-        try_reconnect( ts + 1000 );
+        try_reconnect( ts < 10000 ? ts + 1000 : ts );
       }else{
         console.log( 'reconnected(' + ts + ').' );
         ts = initial_ms;
