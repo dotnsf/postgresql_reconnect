@@ -9,9 +9,11 @@ This app tries to connect PostgreSQL DB on startup. If PostgreSQL was terminated
 
 ## Prepare docker
 
-`$ docker run -it --name postgres -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=P@ssw0rd -e POSTGRES_DB=mydb -p 5432:5432 postgres`
+- `$ docker run -d --name postgres -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=P@ssw0rd -e POSTGRES_DB=mydb -p 5432:5432 postgres`
 
-`$ psql "user=admin port=5432 host=localhost dbname=mydb password=P@ssw0rd"`
+  - `$ docker run -d --name postgres -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=P@ssw0rd -e POSTGRES_DB=mydb -p 5432:5432 -v /tmp/postgres/data:/var/lib/postgresql/data postgres`
+
+- `$ psql "user=admin port=5432 host=localhost dbname=mydb password=P@ssw0rd"`
 
 
 ## Licensing
