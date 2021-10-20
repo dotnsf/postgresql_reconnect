@@ -23,7 +23,6 @@ pg.connect( function( err, client ){
     //. 初回起動時に DB が動いていない
     console.log( 'no db on startup', err.code );
     try_reconnect( ms );
-    return;
   }else{
     console.log( 'connected.' );
     exports.pg = client;
@@ -35,7 +34,6 @@ pg.on( 'error', function( err ){
     //. terminated by admin?
     try_reconnect( ms );
   }
-  return;
 });
 
 function try_reconnect( ts ){
@@ -49,12 +47,10 @@ function try_reconnect( ts ){
         //. 接続リトライ時に DB が動いていない
         console.log( 'no db on retry(' + ts + ')', err.code );
         try_reconnect( ts + 1000 );
-        return;
       }else{
         console.log( 'reconnected(' + ts + ').' );
         ts = initial_ms;
         exports.pg = client;
-        return;
       }
     });
     pg.on( 'error', function( err ){
@@ -63,7 +59,6 @@ function try_reconnect( ts ){
         //. terminated by admin?
         try_reconnect( ms + 1000 );
       }
-      return;
     });
   }, ts );
 }
