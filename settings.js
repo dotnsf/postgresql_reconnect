@@ -29,7 +29,7 @@ pg.connect( function( err, client ){
 });
 pg.on( 'error', function( err ){
   console.log( 'on error on startup', err.code );
-  if( err.code == '57P01' ){
+  if( err.code && err.code.startsWith( '5' ) ){
     //. terminated by admin?
     try_reconnect( ms );
   }
@@ -54,7 +54,7 @@ function try_reconnect( ts ){
     });
     pg.on( 'error', function( err ){
       console.log( 'on error on retry(' + ts + ')', err.code );
-      if( err.code == '57P01' ){
+      if( err.code && err.code.startsWith( '5' ) ){
         //. terminated by admin?
         try_reconnect( ms + 1000 );
       }
