@@ -16,6 +16,16 @@ This app tries to connect PostgreSQL DB on startup. If PostgreSQL was terminated
 - `$ psql "user=admin port=5432 host=localhost dbname=mydb password=P@ssw0rd"`
 
 
+## How to demonstrate
+
+- Old one(with Connection Pooling)
+
+  - `$ npm run old_dump`
+
+- New one(with Connection Pooling)
+
+  - `$ npm run dump`
+
 ## Licensing
 
 This code is licensed under MIT.
