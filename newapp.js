@@ -16,12 +16,12 @@ app.get( '/', function( req, res ){
 //. ping
 app.get( '/ping', async function( req, res ){
   res.contentType( 'application/json; charset=utf-8' );
+  var conn = null;
   try{
-    var conn = await settings.pg.connect();
+    conn = await settings.pg.connect();
     var sql = 'select 1';
     var query = { text: sql, values: [] };
     conn.query( query, function( err, result ){
-      conn.release();
       if( err ){
         console.log( { err } );
         res.status( 400 );
@@ -37,6 +37,10 @@ app.get( '/ping', async function( req, res ){
     res.status( 400 );
     res.write( JSON.stringify( { status: false, error: e }, null, 2 ) );
     res.end();
+  }finally{
+    if( conn ){
+      conn.release();
+    }
   }
 });
 
