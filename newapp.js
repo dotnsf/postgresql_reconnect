@@ -3,7 +3,7 @@
 var express = require( 'express' ),
     app = express();
 
-var settings = require( './pool' );
+var settings = require( './newsettings' );
 
 
 //. top
