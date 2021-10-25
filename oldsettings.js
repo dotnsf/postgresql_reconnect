@@ -1,4 +1,4 @@
-//. settings.js
+//. oldsettings.js
 //. ローカルホストからアプリを実行する際に使う設定ファイル
 var PG = require( 'pg' );
 

@@ -2,9 +2,9 @@
     "name": "postgresql_reconnect",
     "version": "0.0.1",
     "scripts": {
-        "old": "node app.js",
+        "old": "node oldapp.js",
         "new": "node newapp.js",
-        "start": "node app.js"
+        "start": "node newapp.js"
     },
     "dependencies": {
         "body-parser": "^1.19.0",

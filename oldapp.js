@@ -1,9 +1,9 @@
-//. app.js
+//. oldapp.js
 
 var express = require( 'express' ),
     app = express();
 
-var settings = require( './settings' );
+var settings = require( './oldsettings' );
 
 
 //. top
