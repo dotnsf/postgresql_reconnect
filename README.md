@@ -34,7 +34,7 @@ This app tries to connect PostgreSQL DB on startup. If PostgreSQL was terminated
 
     - `http://localhost:8080/`
 
-  - Ping( result of SQL )
+  - Ping( result of simple SQL(`select 1`) )
 
     - `http://localhost:8080/ping`
 
